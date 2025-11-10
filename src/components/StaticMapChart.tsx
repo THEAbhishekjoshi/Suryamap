@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import React, { memo} from "react";
 import {
     ComposableMap,
     Geographies,
@@ -6,31 +6,23 @@ import {
  
 } from "react-simple-maps";
 import { scaleQuantile } from "d3-scale";
-import { csv } from "d3-fetch";
+import { solarPowerGenerationContext, type YearDataProps } from "@/context/SPGenerationContext";
+import { YearContext } from "@/context/YearContext";
 
 
-interface GeoData {
-    State: string
-    year17: number
-    year18: number
-    year19: number
-    year20: number
-    year21: number
-    year22: number
-}
 const geoUrl = "/gadm41_IND_1.json";
 
 const MapChart = () => {
 
-    const [generationData, setGeneartionData] = useState<GeoData[]>([])
-    useEffect(() => {
-        csv("/solarPowerGeneration.csv").then((countries: any) => {
-            setGeneartionData(countries);
-        });
-    }, []);
+    const {generationData} = React.useContext(solarPowerGenerationContext)
+    const {year} =  React.useContext(YearContext)
+    
 
-    const colorScale: any = scaleQuantile<string>()
-        .domain(generationData.map((d: GeoData) => d.year22))
+    const colorScale= scaleQuantile<string>()
+        .domain(generationData
+           .map((d:YearDataProps) => +d[year as keyof YearDataProps])
+           .filter((v)=>!isNaN(v))
+        )
         .range([
             "#ffedea",
             "#ffcec5",
@@ -65,11 +57,11 @@ const MapChart = () => {
                 <Geographies geography={geoUrl} >
                     {({ geographies }) =>
                         geographies.map((geo) => {
-                            const cur = generationData.find(s => s.State == geo.properties.NAME_1)
+                            const cur:any = generationData.find(s => s.State == geo.properties.NAME_1)
                             return (<Geography
                                 key={geo.rsmKey}
                                 geography={geo}
-                                fill={cur?  colorScale(cur.year22): "#EEE"}
+                                fill={cur?  colorScale(cur[year]): "#EEE"}
                                 style={{
                                     default: { outline: "none" },
                                    hover: {outline: "none" },

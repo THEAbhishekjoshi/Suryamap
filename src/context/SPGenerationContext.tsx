@@ -19,7 +19,10 @@ interface solarPowerGenerationContextProps {
     setGenerationData: React.Dispatch<React.SetStateAction<YearDataProps[]>>
 }
 
-export const solarPowerGenerationContext = createContext<solarPowerGenerationContextProps | undefined>(undefined);
+export const solarPowerGenerationContext = createContext<solarPowerGenerationContextProps>({
+  generationData: [],
+  setGenerationData:()=>{}
+});
 
 export const SolarPowerGenerationProvider = ({ children }: { children: React.ReactNode }) => {
     const [generationData, setGenerationData] = useState<YearDataProps[]>([])

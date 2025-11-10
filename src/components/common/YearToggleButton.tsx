@@ -9,7 +9,6 @@ type variantType = "default" | "destructive" | "outline" | "secondary" | "ghost"
 
 export default function ButtonCardGroupSep() {
     const [vaBtn1, setVaBtn1] = useState<variantType>("default")
-    // const [vaBtnx, setVaBtn2] = useState<variantType>("ghost")
     const [vaBtn2, setVaBtn2] = useState<variantType>("ghost")
     const [vaBtn3, setVaBtn3] = useState<variantType>("ghost")
     const [vaBtn4, setVaBtn4] = useState<variantType>("ghost")
