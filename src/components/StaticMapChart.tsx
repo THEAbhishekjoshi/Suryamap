@@ -45,7 +45,7 @@ const MapChart = () => {
 
     return (
         <div
-            className="mt-10  w-[600px]"
+            className="mt-3  w-[600px]"
             style={{
                 perspective: "800px",
                 transform: "rotateX(45deg) scale(1.5)",

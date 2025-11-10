@@ -1,39 +1,30 @@
-import React, { memo, useEffect, useState } from "react";
+import { solarPowerGenerationContext, type YearDataProps } from "@/context/SPGenerationContext";
+import { YearContext } from "@/context/YearContext";
+import React, { memo } from "react";
 import {
     ComposableMap,
     Geographies,
     Geography,
-    ZoomableGroup,
 } from "react-simple-maps";
 
 
+const geoUrl = "/gadm41_IND_1.json";
 interface MapChartProps {
-    setTooltipContent: (content: Record<string,string>) => void;
+    setTooltipContent: (content: Record<string, string>) => void;
 }
 
-type GenerationData = Record<string, number[]>;
-
-const geoUrl = "/gadm41_IND_1.json";
-
-const stateGenUrl = "/solarPowerGeneration.json";
-
 const MapChart: React.FC<MapChartProps> = ({ setTooltipContent }) => {
+    const genPowerData = React.useContext(solarPowerGenerationContext)
+    const { year } = React.useContext(YearContext)
 
-    const [generationData,setGeneartionData] = useState<GenerationData>({})
-    console.log(generationData)
-
-    useEffect(() => {
-        fetch(stateGenUrl)
-            .then((res) => res.json())
-            .then((data:GenerationData) => setGeneartionData(data))
-            .catch((error) => console.log(error))
-    }, [])
-
-    
+    if (!genPowerData) {
+        throw new Error("useContext(solarPowerGenerationContext) must be used within SolarPowerGenerationProvider")
+    }
+    const { generationData } = genPowerData;
 
     return (
         <div
-            className="mt-10  w-[600px]"
+            className="mt-3  w-[600px]"
             style={{
                 perspective: "800px",
                 transform: "rotateX(45deg) scale(1.5)",
@@ -46,10 +37,9 @@ const MapChart: React.FC<MapChartProps> = ({ setTooltipContent }) => {
                     scale: 1400,
                 }}
 
-                className=" w-[600px] h-[600px] relative z-10"
+                className=" w-[600px] h-[600px] relative z-10 "
 
             >
-
                 <Geographies geography={geoUrl} >
                     {({ geographies }) =>
                         geographies.map((geo) => (
@@ -63,19 +53,23 @@ const MapChart: React.FC<MapChartProps> = ({ setTooltipContent }) => {
                                 }}
                                 data-tooltip-id="map-tooltip"
                                 onMouseEnter={() => {
-                                    const str: number[] = generationData[geo.properties.NAME_1] ?? [];
-                                    const str1:string = str.reduce((accu,val)=> accu+val,0).toFixed(2)
-                                    // setTooltipContent(`${geo.properties.NAME_1}: ${str1}     GWh` );
+                                    const found = generationData.find(
+                                        (d) => d.State === geo.properties.NAME_1
+                                    )
+
+                                    const value = found && year in found ? +found[year as keyof YearDataProps] : "N/A";
+                                    const val2 = value=="N/A" ? value : value.toFixed(2)
+
                                     setTooltipContent({
                                         state: `${geo.properties.NAME_1}`,
-                                        Generation:str1
+                                        Generation: `${val2}`,
+                                        Year: `${year}`
                                     })
                                 }}
                                 onMouseLeave={() => {
                                     setTooltipContent({});
                                 }}
                             />
-
                         ))
                     }
                 </Geographies>
