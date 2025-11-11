@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "category": "Overview",
+    "icon": "🌞",
+    "fact": "India ranks among the top 5 countries in the world for total installed solar power capacity."
+  },
+  {
+    "id": 2,
+    "category": "Infrastructure",
+    "icon": "🏜️",
+    "fact": "The world’s largest solar park — Bhadla Solar Park in Rajasthan — spans over 14,000 acres!"
+  },
+  {
+    "id": 3,
+    "category": "Infrastructure",
+    "icon": "⚡",
+    "fact": "Bhadla Solar Park alone generates over 2,245 megawatts (MW) of power — enough to light millions of homes."
+  },
+  {
+    "id": 4,
+    "category": "Growth",
+    "icon": "📈",
+    "fact": "India’s solar power capacity has grown more than 25 times since 2014."
+  },
+  {
+    "id": 5,
+    "category": "Global",
+    "icon": "🌍",
+    "fact": "The International Solar Alliance (ISA) was launched by India and France to promote global solar cooperation."
+  },
+  {
+    "id": 6,
+    "category": "Policy",
+    "icon": "🎯",
+    "fact": "India aims to reach 280 GW of solar capacity by 2030 as part of its renewable energy goals."
+  },
+  {
+    "id": 7,
+    "category": "Regional",
+    "icon": "🗺️",
+    "fact": "Rajasthan, Gujarat, and Karnataka are India’s top three solar energy-producing states."
+  },
+  {
+    "id": 8,
+    "category": "Innovation",
+    "icon": "🏘️",
+    "fact": "India’s first solar village, Modhera in Gujarat, is powered entirely by solar energy."
+  },
+  {
+    "id": 9,
+    "category": "Infrastructure",
+    "icon": "✈️",
+    "fact": "India’s first solar-powered airport is Cochin International Airport in Kerala."
+  },
+  {
+    "id": 10,
+    "category": "Transport",
+    "icon": "🚆",
+    "fact": "The Indian Railways operates solar-powered trains and has installed panels on station rooftops."
+  },
+  {
+    "id": 11,
+    "category": "Geography",
+    "icon": "🏔️",
+    "fact": "Leh in Ladakh is home to one of the highest altitude solar power plants in the world."
+  },
+  {
+    "id": 12,
+    "category": "Policy",
+    "icon": "📜",
+    "fact": "India’s National Solar Mission was launched in 2010 to promote sustainable solar growth."
+  },
+  {
+    "id": 13,
+    "category": "Climate",
+    "icon": "☀️",
+    "fact": "India receives over 300 sunny days per year — a perfect condition for solar energy generation."
+  },
+  {
+    "id": 14,
+    "category": "Economy",
+    "icon": "💰",
+    "fact": "The cost of solar power in India has dropped by over 80% in the past decade."
+  },
+  {
+    "id": 15,
+    "category": "Innovation",
+    "icon": "🌊",
+    "fact": "India has installed solar panels even on canals — reducing evaporation and generating clean power!"
+  },
+  {
+    "id": 16,
+    "category": "Household",
+    "icon": "🏡",
+    "fact": "Solar rooftops in India are helping households cut electricity bills by up to 90%."
+  },
+  {
+    "id": 17,
+    "category": "Infrastructure",
+    "icon": "🏞️",
+    "fact": "India’s largest floating solar plant is located in Ramagundam, Telangana."
+  },
+  {
+    "id": 18,
+    "category": "Agriculture",
+    "icon": "🚜",
+    "fact": "The government’s PM-KUSUM scheme helps farmers install solar pumps for irrigation."
+  },
+  {
+    "id": 19,
+    "category": "Science",
+    "icon": "📊",
+    "fact": "The average solar radiation received in India is about 4–7 kWh per square meter per day."
+  },
+  {
+    "id": 20,
+    "category": "Infrastructure",
+    "icon": "🏗️",
+    "fact": "Tamil Nadu’s Kamuthi Solar Power Project was once the world’s largest single-location solar plant."
+  },
+  {
+    "id": 21,
+    "category": "Technology",
+    "icon": "🚀",
+    "fact": "India’s space agency ISRO uses solar power to run most of its satellites."
+  },
+  {
+    "id": 22,
+    "category": "Environment",
+    "icon": "🌱",
+    "fact": "Solar energy helps India reduce its dependence on coal and imported oil."
+  },
+  {
+    "id": 23,
+    "category": "Rural Development",
+    "icon": "🏕️",
+    "fact": "Many Indian villages have achieved complete electrification through solar microgrids."
+  },
+  {
+    "id": 24,
+    "category": "Employment",
+    "icon": "👷‍♂️",
+    "fact": "India’s renewable energy sector employs over 100,000 people in solar alone."
+  },
+  {
+    "id": 25,
+    "category": "Rural Development",
+    "icon": "🔦",
+    "fact": "Solar lanterns and home lighting systems are transforming lives in rural India."
+  },
+  {
+    "id": 26,
+    "category": "Potential",
+    "icon": "📡",
+    "fact": "India’s solar potential is estimated at more than 750 GW — one of the highest in the world."
+  },
+  {
+    "id": 27,
+    "category": "Culture",
+    "icon": "🛕",
+    "fact": "Even Indian temples like Tirupati and Shirdi use solar power for daily operations."
+  },
+  {
+    "id": 28,
+    "category": "Innovation",
+    "icon": "🚗",
+    "fact": "Several Indian startups are building solar-powered EV charging stations."
+  },
+  {
+    "id": 29,
+    "category": "Environment",
+    "icon": "♻️",
+    "fact": "Solar power reduces around 1.5 tonnes of CO₂ emissions per megawatt-hour generated."
+  },
+  {
+    "id": 30,
+    "category": "Future",
+    "icon": "🔆",
+    "fact": "With growing innovation and awareness, India’s solar future looks brighter than ever!"
+  }
+]

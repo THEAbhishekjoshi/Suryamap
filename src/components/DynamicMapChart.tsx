@@ -37,7 +37,7 @@ const MapChart: React.FC<MapChartProps> = ({ setTooltipContent }) => {
                     scale: 1400,
                 }}
 
-                className=" w-[600px] h-[600px] relative z-10 "
+                className=" w-[600px] h-[600px] relative z-10"
 
             >
                 <Geographies geography={geoUrl} >
