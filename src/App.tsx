@@ -12,6 +12,7 @@ import YearButton from './components/YearButton.tsx'
 import { YearProvider } from './context/YearContext.tsx';
 import { SolarPowerGenerationProvider } from './context/SPGenerationContext.tsx';
 import QuizBox from './components/QuizBox.tsx';
+import TopStatesPanel from './components/TopStatesPanel.tsx';
 
 function App() {
 
@@ -32,8 +33,7 @@ function App() {
           <div className=' flex justify-center '>
             <div className='flex flex-col w-[18rem] items-center gap-5 relative z-10' >
               {/* <div className='bg-[#039dbf]'>Logo/Homepage</div> */}
-               <div className='w-[17rem] bg-[#039dbf] h-[30rem] rounded-sm mt-20'>
-              </div>
+              <TopStatesPanel />
             </div>
           </div>
           {/* Main Pannel */}
