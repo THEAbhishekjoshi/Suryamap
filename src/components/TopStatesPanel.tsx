@@ -80,17 +80,17 @@ const TopStatesPanel = () => {
   };
 
   return (
-    <div className="w-68 bg-[#039dbf] h-auto rounded-sm mt-20 p-4 overflow-y-auto">
-      <div className="flex items-center justify-center gap-2 mb-4 pb-2 border-b border-white/20">
+    <div className="w-full bg-[#039dbf] h-full rounded-sm mt-10 p-4 overflow-y-auto scrollbar-none">
+      <div className="flex items-center justify-center gap-2 mb-4 pb-2 border-b border-white/20 ">
         <Trophy className="text-yellow-300" size={24} />
         <h2 className="text-white text-lg font-semibold">Top 5 States</h2>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-3 ">
         {topStates.map((state) => (
           <div
             key={state.state}
-            className="bg-white/10 rounded-md p-3 backdrop-blur-sm hover:bg-white/20 transition-colors"
+            className="bg-white/10 rounded-md p-3 backdrop-blur-sm hover:bg-white/20 transition-colors "
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">

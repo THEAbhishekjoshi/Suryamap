@@ -15,38 +15,39 @@ export interface YearDataProps {
 
 
 interface solarPowerGenerationContextProps {
-    generationData: YearDataProps[]
-    setGenerationData: React.Dispatch<React.SetStateAction<YearDataProps[]>>
+  generationData: YearDataProps[]
+  setGenerationData: React.Dispatch<React.SetStateAction<YearDataProps[]>>
 }
 
 export const solarPowerGenerationContext = createContext<solarPowerGenerationContextProps>({
   generationData: [],
-  setGenerationData:()=>{}
+  setGenerationData: () => { }
 });
 
 export const SolarPowerGenerationProvider = ({ children }: { children: React.ReactNode }) => {
-    const [generationData, setGenerationData] = useState<YearDataProps[]>([])
+  const [generationData, setGenerationData] = useState<YearDataProps[]>([])
 
-    useEffect(() => {
-  csv("/solarPowerGeneration1.csv").then((data) => {
-    const formattedData: YearDataProps[] = data.map((d: any) => ({
-       State: d.State,
-      "2017": +d.year17,
-      "2018": +d.year18,
-      "2019": +d.year19,
-      "2020": +d.year20,
-      "2021": +d.year21,
-      "2022": +d.year22,
-      "2017-2023": +d.yearAvg,
-    }));
-    setGenerationData(formattedData);
-  });
-}, []);
+  useEffect(() => {
+    csv("/solarPowerGeneration1.csv").
+      then((data) => {
+        const formattedData: YearDataProps[] = data.map((d: any) => ({
+          State: d.State,
+          "2017": +d.year17,
+          "2018": +d.year18,
+          "2019": +d.year19,
+          "2020": +d.year20,
+          "2021": +d.year21,
+          "2022": +d.year22,
+          "2017-2023": +d.yearAvg,
+        }));
+        setGenerationData(formattedData);
+      });
+  }, []);
 
 
-    return (
-        <solarPowerGenerationContext.Provider value={{ generationData, setGenerationData }}>
-            {children}
-        </solarPowerGenerationContext.Provider>
-    )
+  return (
+    <solarPowerGenerationContext.Provider value={{ generationData, setGenerationData }}>
+      {children}
+    </solarPowerGenerationContext.Provider>
+  )
 }
