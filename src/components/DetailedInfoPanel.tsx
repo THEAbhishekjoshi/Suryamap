@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { DataTable } from './common/DataTable'
 import DataGraph from './DataGraph'
-// import { Input } from "@/components/ui/input"
-// import { Label } from "@/components/ui/label"
 import {
   Tabs,
   TabsContent,

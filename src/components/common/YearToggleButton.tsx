@@ -17,7 +17,7 @@ export default function ButtonCardGroupSep() {
     const [vaBtnAvg, setVaBtnAvg] = useState<variantType>("ghost")
     return (
         <ButtonGroup className="" orientation="vertical">
-            <Button variant={vaBtn1} size="lg" className={`w-[6vw] h-[3rem] ${vaBtn1 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
+            <Button variant={vaBtn1} size="lg" className={`w-[6vw] h-12 ${vaBtn1 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
                 if (vaBtn1 == "ghost") {
                     setVaBtn1("default")
                     setVaBtn2("ghost")
@@ -31,7 +31,7 @@ export default function ButtonCardGroupSep() {
             }}>
                 2017
             </Button>
-            <Button variant={vaBtn2} size="lg" className={`w-[6vw] h-[3rem] ${vaBtn2 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
+            <Button variant={vaBtn2} size="lg" className={`w-[6vw] h-12 ${vaBtn2 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
                 if (vaBtn2 == "ghost") {
                     setVaBtn1("ghost")
                     setVaBtn2("default")
@@ -45,7 +45,7 @@ export default function ButtonCardGroupSep() {
             }}>
                 2018
             </Button>
-            <Button variant={vaBtn3} size="lg" className={`w-[6vw] h-[3rem] ${vaBtn3 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
+            <Button variant={vaBtn3} size="lg" className={`w-[6vw] h-12 ${vaBtn3 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
                 if (vaBtn3 == "ghost") {
                     setVaBtn1("ghost")
                     setVaBtn2("ghost")
@@ -59,7 +59,7 @@ export default function ButtonCardGroupSep() {
             }}>
                 2019
             </Button>
-            <Button variant={vaBtn4} size="lg" className={`w-[6vw] h-[3rem] ${vaBtn4 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
+            <Button variant={vaBtn4} size="lg" className={`w-[6vw] h-12 ${vaBtn4 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
                 if (vaBtn4 == "ghost") {
                     setVaBtn1("ghost")
                     setVaBtn2("ghost")
@@ -73,7 +73,7 @@ export default function ButtonCardGroupSep() {
             }}>
                 2020
             </Button>
-            <Button variant={vaBtn5} size="lg" className={`w-[6vw] h-[3rem] ${vaBtn5 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
+            <Button variant={vaBtn5} size="lg" className={`w-[6vw] h-12 ${vaBtn5 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
                 if (vaBtn5 == "ghost") {
                     setVaBtn1("ghost")
                     setVaBtn2("ghost")
@@ -87,7 +87,7 @@ export default function ButtonCardGroupSep() {
             }}>
                 2021
             </Button>
-            <Button variant={vaBtn6} size="lg" className={`w-[6vw] h-[3rem] ${vaBtn6 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
+            <Button variant={vaBtn6} size="lg" className={`w-[6vw] h-12 ${vaBtn6 == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
                 if (vaBtn6 == "ghost") {
                     setVaBtn1("ghost")
                     setVaBtn2("ghost")
@@ -101,7 +101,7 @@ export default function ButtonCardGroupSep() {
             }}>
                 2022
             </Button>
-            <Button variant={vaBtnAvg} size="lg" className={`w-[6vw] h-[3rem] ${vaBtnAvg == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
+            <Button variant={vaBtnAvg} size="lg" className={`w-[6vw] h-12 ${vaBtnAvg == 'default' ? 'bg-[#039dbf]' : 'bg-[#e5ebe7]'} `} onClick={() => {
                 if (vaBtnAvg == "ghost") {
                     setVaBtn1("ghost")
                     setVaBtn2("ghost")

@@ -1,6 +1,6 @@
 import { solarPowerGenerationContext, type YearDataProps } from "@/context/SPGenerationContext";
 import { YearContext } from "@/context/YearContext";
-import React, { memo, useEffect, useRef, useState, type SetStateAction } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import {
     ComposableMap,
     Geographies,
