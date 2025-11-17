@@ -80,7 +80,7 @@ const TopStatesPanel = () => {
   };
 
   return (
-    <div className="w-full bg-[#039dbf] h-full rounded-sm mt-10 p-4 overflow-y-auto scrollbar-none">
+    <div className="w-full bg-[#039dbf] h-full rounded-sm mt-5 p-4 overflow-y-auto scrollbar-none">
       <div className="flex items-center justify-center gap-2 mb-4 pb-2 border-b border-white/20 ">
         <Trophy className="text-yellow-300" size={24} />
         <h2 className="text-white text-lg font-semibold">Top 5 States</h2>

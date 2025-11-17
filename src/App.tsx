@@ -3,7 +3,7 @@ import DynamicMapChart from "./components/DynamicMapChart.tsx";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import 'react-tooltip/dist/react-tooltip.css';
 import StaticMapChart from './components/StaticMapChart.tsx';
-import { House, Vault, VolumeOff } from 'lucide-react'
+import { House, Zap } from 'lucide-react'
 import { CalendarDays } from 'lucide-react'
 
 import ButtonGroupSep from './components/common/ButtonGroupSep.tsx'
@@ -11,10 +11,10 @@ import ButtonGroupSep from './components/common/ButtonGroupSep.tsx'
 import YearButton from './components/YearButton.tsx'
 import { YearProvider } from './context/YearContext.tsx';
 import { SolarPowerGenerationProvider } from './context/SPGenerationContext.tsx';
-import QuizBox from './components/QuizBox.tsx';
+import QuizBox from './components/FunFact.tsx';
 import TopStatesPanel from './components/TopStatesPanel.tsx';
 import DetailedInfoPanel from './components/DetailedInfoPanel.tsx';
-import earth from '/earth.png'
+
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
           {/* Left Pannel */}
           <div className=' flex justify-center '>
             <div className='flex flex-col w-[18rem] justify-center items-center  relative z-10' >
-              <div className='w-68 h-120 bg-[#039dbf] rounded-sm scroll-smooth '>
+              <div className='w-68 h-120 bg-[#039dbf] rounded-sm scroll-smooth'>
                 <TopStatesPanel />
               </div>
             </div>
@@ -49,13 +49,13 @@ function App() {
                   style={{ backgroundColor: "rgba(10, 10, 10, 0.7)", borderRadius: "10px" }}
                   className="font-family-ibm"
                 >
-                  <div className='w-[15rem] h-[6rem] text-slate-300'>
-                    <div className='text-[1rem] font-semibold mb-2 border-b-2 border-black/30 flex items-center justify-center gap-1'>
+                  <div className='w-60 h-24 text-slate-300'>
+                    <div className='text-[1rem] font-semibold mb-2 border-b-2 border-black/30 flex items-center justify-center gap-2'>
                       <House size={20} />{content.state}
                     </div>
                     <div className="flex flex-col gap-2 pl-3">
-                      <div className='flex items-center gap-1'><Vault size={20} />Value: {content.Generation} GW</div>
-                      <div className='flex items-center gap-1'><CalendarDays size={20} />Year: {content.Year}</div>
+                      <div className='flex items-center gap-1 text-base'><Zap size={20} />Value: {content.Generation} GW</div>
+                      <div className='flex items-center gap-1 text-base'><CalendarDays size={20} />Year: {content.Year}</div>
                     </div>
                   </div>
                 </ReactTooltip>
@@ -64,7 +64,7 @@ function App() {
               <StaticMapChart />
             )}
 
-            <div className='mr-[10rem] mt-[0.5rem]'>
+            <div className='mr-40 mt-2'>
               <ButtonGroupSep setDynamicView={setDynamicView} />
             </div>
           </div>
@@ -85,11 +85,11 @@ function App() {
               </div>
 
               {/* Detailed Pannel */}
-              <div className={`${selectedStateInfo.State ? 'block' : 'invisible'} w-68 bg-[#039dbf] h-100 rounded-sm `}>
+              <div className={`${selectedStateInfo.State ? 'block' : 'invisible'} w-68 bg-[#039dbf] h-105 rounded-sm `}>
                 <DetailedInfoPanel selectedStateInfo={selectedStateInfo} />
               </div>
 
-              <div className='w-[17rem] h-[10rem] mt-7 bg-[#039dbf] rounded-sm'>
+              <div className='w-68 h-40 mt-3 bg-[#039dbf] rounded-sm'>
                 <QuizBox />
               </div>
             </div>

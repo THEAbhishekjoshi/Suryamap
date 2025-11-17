@@ -1,3 +1,4 @@
+import { Lightbulb } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const QuizBox = () => {
@@ -23,9 +24,14 @@ const QuizBox = () => {
     }, [facts])
 
     return (
-        <div className='w-full h-full flex flex-col items-center'>
-            <div className='text-center text-white font-medium uppercase mt-0.5'>Fun Facts</div>
-            <div className='bg-white/20 rounded-md p-2 backdrop-blur-sm hover:bg-white/30 transition-colors w-[16rem] h-[7rem] '>
+        <div className='w-full h-full flex flex-col items-center gap-1'>
+            <div className='text-center text-white font-medium uppercase mt-2'>
+                <div className='flex gap-1 justify-center '>
+                <Lightbulb className='text-yellow-300' size={21}/>
+                Fun Facts
+                </div>
+            </div>
+            <div className='bg-white/20 rounded-md p-2 backdrop-blur-sm hover:bg-white/30 transition-colors w-[16rem] h-28 '>
                 <div className='flex flex-col gap-2 text-sm text-white  animate-bounce mt-3 '>
                     <div>{fact1}</div>
                 </div>

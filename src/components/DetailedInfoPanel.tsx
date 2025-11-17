@@ -9,6 +9,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import { FileText } from 'lucide-react'
 
 export interface StateProps {
   selectedStateInfo: Record<string, string>
@@ -17,10 +18,15 @@ const DetailedInfoPanel: React.FC<StateProps> = ({ selectedStateInfo }) => {
 
   return (
 
-    <div className={`p-1`}>
-      <div className='text-white text-center border-b font-semibold border-white/20  pb-2 mb-4 '>Detailed Information</div>
+    <div className="mt-5">
+      <div className='text-white border-b font-semibold border-white/20  pb-2 mb-4 '>
+        <div className='flex gap-1 justify-center'>
+          <FileText className='text-yellow-300'/>
+          Detailed Information
+        </div>
+      </div>
       <div className='text-white ml-2 mb-2 font-semibold '>State: <span className='text-yellow-300 hover:text-white'>{selectedStateInfo.State}</span></div>
-      <div className='bg-white/10 rounded-md p-3 backdrop-blur-sm hover:bg-white/20 transition-colors  h-75'>
+      <div className='bg-white/10 rounded-md p-3 backdrop-blur-sm hover:bg-white/20 transition-colors h-75 mx-1'>
         <Tabs defaultValue="Table" className=''>
           <div className="flex items-center justify-center w-full">
             <TabsList className='w-50'>
@@ -29,7 +35,7 @@ const DetailedInfoPanel: React.FC<StateProps> = ({ selectedStateInfo }) => {
             </TabsList>
           </div>
 
-         <div className="">
+          <div className="">
             <TabsContent value="Table" className='border border-white/30 rounded-sm mt-3 bg-white/20 ' >
               <DataTable selectedState={selectedStateInfo.State} />
             </TabsContent>
