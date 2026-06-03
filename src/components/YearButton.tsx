@@ -15,7 +15,7 @@ import { YearContext } from "@/context/YearContext"
 export default function YearButton() {
 
   const yearCol = React.useContext(solarPowerGenerationContext)
-  const { year,setYear } = React.useContext(YearContext)
+  const { year, setYear } = React.useContext(YearContext)
 
   if (!yearCol) {
     throw new Error("useContext(solarPowerGenerationContext) must be used within SolarPowerGenerationProvider")
@@ -23,14 +23,14 @@ export default function YearButton() {
 
   const { generationData } = yearCol;
   const itemList = Object.keys(generationData[0] || {})
-  //console.log("here====>",itemList)
+
 
 
 
   return (
     <Select onValueChange={(value) => setYear(value)}>
       <SelectTrigger className="w-[7rem] text-white!">
-        <SelectValue placeholder= {year}  />
+        <SelectValue placeholder={year} />
       </SelectTrigger>
       <SelectContent >
         <SelectGroup>

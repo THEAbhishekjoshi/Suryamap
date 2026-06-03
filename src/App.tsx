@@ -54,7 +54,7 @@ function App() {
                       <House size={20} />{content.state}
                     </div>
                     <div className="flex flex-col gap-2 pl-3">
-                      <div className='flex items-center gap-1 text-base'><Zap size={20} />Value: {content.Generation} GW</div>
+                      <div className='flex items-center gap-1 text-base'><Zap size={20} />Value: {content.Generation} MW</div>
                       <div className='flex items-center gap-1 text-base'><CalendarDays size={20} />Year: {content.Year}</div>
                     </div>
                   </div>

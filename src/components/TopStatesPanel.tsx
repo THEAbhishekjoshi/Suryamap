@@ -1,6 +1,5 @@
 import { useContext, useMemo } from 'react';
 import { solarPowerGenerationContext } from '../context/SPGenerationContext';
-import type { YearDataProps } from '../context/SPGenerationContext';
 import { YearContext } from '../context/YearContext';
 import { Trophy, TrendingUp } from 'lucide-react';
 
@@ -19,27 +18,35 @@ const TopStatesPanel = () => {
   const topStates = useMemo(() => {
     if (!generationData || generationData.length === 0) return [];
 
-    const currentYear = year as keyof YearDataProps;
-    
+    const currentYear = year as string;
+
     // Calculate total generation for the selected year
     const totalGeneration = generationData.reduce((sum, state) => {
-      const value = state[currentYear];
-      return sum + (typeof value === 'number' ? value : 0);
-    }, 0);
+      const value = Number(state[currentYear]);
+      return sum + (!isNaN(value) ? value : 0);
+    }, 0)
 
-    // Get previous year for YoY calculation
-    const yearNum = year === '2017-2023' ? 2022 : parseInt(year);
-    const previousYear = (yearNum - 1).toString() as keyof YearDataProps;
-    const hasPreviousYear = year !== '2017-2023' && yearNum > 2017;
+
+    // year columns from the data
+    const yearKeys = Object.keys(generationData[0] || {})
+      .filter((key) => key !== 'State' && key !== 'Total' && key !== '2017-2023')
+      .sort()
+
+
+    const currentYearIndex = yearKeys.indexOf(currentYear);
+
+    const previousYear = currentYearIndex > 0 ? yearKeys[currentYearIndex - 1] : null;
+    const hasPreviousYear = previousYear !== null;
 
     // Map and calculate metrics for each state
     const statesWithMetrics: StateRankingData[] = generationData
-      .filter((stateData) => stateData.State !== 'Total')
-      .map((stateData) => {
-        const currentGeneration = stateData[currentYear] as number;
-        const previousGeneration = hasPreviousYear ? (stateData[previousYear] as number) : null;
-        
+      .filter((stateData: Record<string, any>) => stateData.State !== 'Total')
+      .map((stateData: any) => {
+        const currentGeneration = Number(stateData[currentYear]) || 0;
+        const previousGeneration = hasPreviousYear ? (Number(stateData[previousYear]) || 0) : null;
+
         let yoyGrowth: number | null = null;
+
         if (hasPreviousYear && previousGeneration !== null && previousGeneration > 0) {
           yoyGrowth = ((currentGeneration - previousGeneration) / previousGeneration) * 100;
         }
@@ -47,7 +54,7 @@ const TopStatesPanel = () => {
         return {
           state: stateData.State,
           generation: currentGeneration,
-          percentageOfTotal: (currentGeneration / totalGeneration) * 100,
+          percentageOfTotal: totalGeneration > 0 ? (currentGeneration / totalGeneration) * 100 : 0,
           yoyGrowth,
           rank: 0,
         };
@@ -62,8 +69,10 @@ const TopStatesPanel = () => {
     return statesWithMetrics;
   }, [generationData, year]);
 
-  const formatNumber = (num: number, decimals: number = 2): string => {
-    return num.toFixed(decimals);
+  const formatNumber = (num: any, decimals: number = 2): string => {
+    const parsed = Number(num);
+    if (isNaN(parsed)) return '0.00';
+    return parsed.toFixed(decimals);
   };
 
   const getRankColor = (rank: number): string => {
@@ -104,7 +113,7 @@ const TopStatesPanel = () => {
             <div className="space-y-1 text-xs text-white/90">
               <div className="flex justify-between items-center">
                 <span className="text-white/70">Generation:</span>
-                <span className="font-semibold">{formatNumber(state.generation)} GW</span>
+                <span className="font-semibold">{formatNumber(state.generation)} MW</span>
               </div>
 
               <div className="flex justify-between items-center">
@@ -118,13 +127,12 @@ const TopStatesPanel = () => {
                   YoY Growth:
                 </span>
                 <span
-                  className={`font-semibold ${
-                    state.yoyGrowth === null
-                      ? 'text-white/50'
-                      : state.yoyGrowth >= 0
+                  className={`font-semibold ${state.yoyGrowth === null
+                    ? 'text-white/50'
+                    : state.yoyGrowth >= 0
                       ? 'text-green-300'
                       : 'text-red-300'
-                  }`}
+                    }`}
                 >
                   {state.yoyGrowth === null
                     ? 'N/A'
