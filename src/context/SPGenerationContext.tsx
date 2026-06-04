@@ -16,28 +16,35 @@ import React, { createContext, useEffect, useState } from "react";
 
 interface solarPowerGenerationContextProps {
   generationData: Record<string, number>[]
+  yearKeys: string[],
   setGenerationData: React.Dispatch<React.SetStateAction<Record<string, number>[]>>
 }
 
 export const solarPowerGenerationContext = createContext<solarPowerGenerationContextProps>({
   generationData: [],
+  yearKeys: [],
   setGenerationData: () => { }
 });
 
 export const SolarPowerGenerationProvider = ({ children }: { children: React.ReactNode }) => {
   const [generationData, setGenerationData] = useState<Record<string, number>[]>([])
+  const [yearKeys, setYearKeys] = useState<string[]>([])
 
   useEffect(() => {
-    csv("/solarPowerGeneration1.csv").
-      then((data) => {
+    csv("/solarPowerGeneration1.csv")
+      .then((data) => {
         const formattedData: Record<string, number>[] = data.map((d: any) => d)
         setGenerationData(formattedData);
-      });
+
+        setYearKeys(Object.keys(formattedData[0] || {})
+          .filter((key: any) => key !== 'State' && key !== 'Total' && (key.split('-')[1] - key.split('-')[0]) == 1)
+          .sort())
+      })
   }, [])
 
 
   return (
-    <solarPowerGenerationContext.Provider value={{ generationData, setGenerationData }}>
+    <solarPowerGenerationContext.Provider value={{ generationData, yearKeys, setGenerationData }}>
       {children}
     </solarPowerGenerationContext.Provider>
   )

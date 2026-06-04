@@ -12,11 +12,11 @@ interface StateRankingData {
 }
 
 const TopStatesPanel = () => {
-  const { generationData } = useContext(solarPowerGenerationContext);
+  const { generationData, yearKeys } = useContext(solarPowerGenerationContext);
   const { year } = useContext(YearContext);
 
   const topStates = useMemo(() => {
-    if (!generationData || generationData.length === 0) return [];
+    if (!generationData || generationData.length === 0 || !year) return [];
 
     const currentYear = year as string;
 
@@ -25,13 +25,6 @@ const TopStatesPanel = () => {
       const value = Number(state[currentYear]);
       return sum + (!isNaN(value) ? value : 0);
     }, 0)
-
-
-    // year columns from the data
-    const yearKeys = Object.keys(generationData[0] || {})
-      .filter((key) => key !== 'State' && key !== 'Total' && key !== '2017-2023')
-      .sort()
-
 
     const currentYearIndex = yearKeys.indexOf(currentYear);
 

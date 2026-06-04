@@ -1,4 +1,4 @@
-import { solarPowerGenerationContext, type YearDataProps } from "@/context/SPGenerationContext";
+import { solarPowerGenerationContext } from "@/context/SPGenerationContext";
 import { YearContext } from "@/context/YearContext";
 import React, { memo, useEffect, useRef } from "react";
 import {
@@ -27,11 +27,11 @@ const MapChart: React.FC<MapChartProps> = ({ setTooltipContent, setSelectedState
     useEffect(() => {
         audio.current = new Audio(audioUrl);
         audio.current.load();
-        audio.current.volume=0.3;
+        audio.current.volume = 0.3;
 
         audio2.current = new Audio(aduioUrl2)
         audio2.current.load();
-        audio.current.volume=0.5;
+        audio.current.volume = 0.5;
     }, []);
 
 
@@ -69,7 +69,7 @@ const MapChart: React.FC<MapChartProps> = ({ setTooltipContent, setSelectedState
                                 onClick={() => {
                                     if (audio2.current) {
                                         audio2.current.pause();
-                                        audio2.current.currentTime = 0; 
+                                        audio2.current.currentTime = 0;
                                         audio2.current.play();
                                     }
                                     setSelectedStateInfo({
@@ -79,14 +79,14 @@ const MapChart: React.FC<MapChartProps> = ({ setTooltipContent, setSelectedState
                                 onMouseEnter={() => {
                                     if (audio.current) {
                                         audio.current.pause();
-                                        audio.current.currentTime = 0; 
+                                        audio.current.currentTime = 0;
                                         audio.current.play();
                                     }
 
                                     const found = generationData.find(
                                         (d) => d.State === geo.properties.NAME_1
                                     )
-                                    const value = found && year in found ? +found[year as keyof YearDataProps] : "N/A";
+                                    const value = found && year in found ? +found[year] : "N/A";
                                     const val2 = value == "N/A" ? value : value.toFixed(2)
 
                                     setTooltipContent({
@@ -108,7 +108,7 @@ const MapChart: React.FC<MapChartProps> = ({ setTooltipContent, setSelectedState
                 </Geographies>
             </ComposableMap>
         </div>
-        
+
     );
 }
 

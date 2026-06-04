@@ -1,12 +1,12 @@
-import React, { memo} from "react";
+import React, { memo } from "react";
 import {
     ComposableMap,
     Geographies,
     Geography,
- 
+
 } from "react-simple-maps";
 import { scaleQuantile } from "d3-scale";
-import { solarPowerGenerationContext, type YearDataProps } from "@/context/SPGenerationContext";
+import { solarPowerGenerationContext } from "@/context/SPGenerationContext";
 import { YearContext } from "@/context/YearContext";
 
 
@@ -14,14 +14,14 @@ const geoUrl = "/gadm41_IND_1.json";
 
 const MapChart = () => {
 
-    const {generationData} = React.useContext(solarPowerGenerationContext)
-    const {year} =  React.useContext(YearContext)
-    
+    const { generationData } = React.useContext(solarPowerGenerationContext)
+    const { year } = React.useContext(YearContext)
 
-    const colorScale= scaleQuantile<string>()
+
+    const colorScale = scaleQuantile<string>()
         .domain(generationData
-           .map((d:YearDataProps) => +d[year as keyof YearDataProps])
-           .filter((v)=>!isNaN(v))
+            .map((d: any) => +d[year])
+            .filter((v) => !isNaN(v))
         )
         .range([
             "#ffedea",
@@ -57,15 +57,15 @@ const MapChart = () => {
                 <Geographies geography={geoUrl} >
                     {({ geographies }) =>
                         geographies.map((geo) => {
-                            const cur:any = generationData.find(s => s.State == geo.properties.NAME_1)
+                            const cur: any = generationData.find(s => s.State == geo.properties.NAME_1)
                             return (<Geography
                                 key={geo.rsmKey}
                                 geography={geo}
-                                fill={cur?  colorScale(cur[year]): "#EEE"}
+                                fill={cur ? colorScale(cur[year]) : "#EEE"}
                                 style={{
                                     default: { outline: "none" },
-                                   hover: {outline: "none" },
-                                    pressed: { outline: "none"}
+                                    hover: { outline: "none" },
+                                    pressed: { outline: "none" }
                                 }}
                             />)
 

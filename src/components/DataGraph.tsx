@@ -11,7 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { useContext, useEffect, useState } from "react";
 import { csv } from "d3-fetch";
-import { solarPowerGenerationContext, type YearDataProps } from "@/context/SPGenerationContext";
+import { solarPowerGenerationContext } from "@/context/SPGenerationContext";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 interface DataGraphProps {
@@ -60,8 +60,9 @@ const DataGraph = ({ selectedState, dataType }: DataGraphProps) => {
     else {
         const { generationData } = useContext(solarPowerGenerationContext)
         yearList = generationData.length ? Object.keys(generationData[0]).filter((k) => k !== "State") : [" "]
-        const stateRow = generationData.find((s) => s.State === selectedState)
-        dataList = stateRow ? yearList.map((y) => +stateRow[y as keyof YearDataProps]) : []
+        const stateRow = generationData.find((s: any) => s.State === selectedState)
+        dataList = stateRow ? yearList.map((y) => +stateRow[y]) : []
+
 
 
     }

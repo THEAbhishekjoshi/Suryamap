@@ -22,10 +22,16 @@ export default function YearButton() {
   }
 
   const { generationData } = yearCol;
-  const itemList = Object.keys(generationData[0] || {})
+  const itemList = Object.keys(generationData[0] || {});
 
-
-
+  React.useEffect(() => {
+    if (!year && itemList.length > 0) {
+      const validItems = itemList.filter(item => item !== 'State');
+      if (validItems.length > 0) {
+        setYear(validItems[validItems.length - 1]);
+      }
+    }
+  }, [year, itemList, setYear]);
 
   return (
     <Select onValueChange={(value) => setYear(value)}>

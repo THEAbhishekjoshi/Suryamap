@@ -15,8 +15,8 @@ import { useContext, useEffect, useState } from "react"
 export function DataTable({ selectedState }: { selectedState: string }) {
     const [capData, setCapData] = useState<Record<string, string>[]>([])
     console.log("state:", selectedState)
-    const { generationData } = useContext(solarPowerGenerationContext)
-  
+    const { generationData, yearKeys } = useContext(solarPowerGenerationContext)
+
 
     useEffect(() => {
         csv('/solar_capacity_statewise_2017_2023.csv')
@@ -26,10 +26,10 @@ export function DataTable({ selectedState }: { selectedState: string }) {
     }, [])
 
     const header: string[] = capData.length > 0 ? Object.keys(capData[0]) : []
-   
+
     return (
 
-            <div className={`*:px-2 *:py-8 mb-1 ${selectedState ? 'scrollbar-thin scrollbar-thumb-sky-700 scrollbar-track-sky-300 h-full':'scrollbar-none'} overflow-x-scroll`}>
+        <div className={`*:px-2 *:py-8 mb-1 ${selectedState ? 'scrollbar-thin scrollbar-thumb-sky-700 scrollbar-track-sky-300 h-full' : 'scrollbar-none'} overflow-x-scroll`}>
             <Table className=" ">
                 {/* <TableCaption className="text-white text-left ml-2">{!selectedState ? 'Select A State' : 'Units(MW)'}</TableCaption> */}
                 <TableHeader>
@@ -45,19 +45,17 @@ export function DataTable({ selectedState }: { selectedState: string }) {
                 <TableBody >
                     {
                         generationData
-                            .filter((s) => s.State == selectedState)
-                            .map((d) => (
-                                <TableRow key={d.State} className="text-white">
+                            .filter((s: any) => s.State === selectedState)
+                            .map((m: any) => (
+                                <TableRow key={m.State} className="text-white">
                                     <TableCell className="text-black">Electricity</TableCell>
-                                    <TableCell className="font-medium ">{d["2017"]}</TableCell>
-                                    <TableCell>{d["2018"]}</TableCell>
-                                    <TableCell>{d["2019"]}</TableCell>
-                                    <TableCell>{d["2020"]}</TableCell>
-                                    <TableCell>{d["2021"]}</TableCell>
-                                    <TableCell>{d["2022"]}</TableCell>
 
+                                    {yearKeys.map((year: string) => (
+                                        <TableCell key={year}>
+                                            {m[year]}
+                                        </TableCell>
+                                    ))}
                                 </TableRow>
-
                             ))
                     }
                     {
@@ -80,7 +78,7 @@ export function DataTable({ selectedState }: { selectedState: string }) {
                     }
                 </TableBody>
             </Table>
-            </div>
+        </div>
 
 
     )
