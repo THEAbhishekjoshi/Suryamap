@@ -4,12 +4,15 @@ import TiltCard from './components/TiltImage'
 import PixelCard from './components/ui/PixelCard'
 import { csvParse } from "d3-dsv"
 import { toast } from "sonner"
+import validateUploadedCsvFiles from './lib/validateUploadedCsvFiles';
+import Loading from './components/common/Loading';
 
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
   const [solarGenFile, setSolarGenFile] = useState<File | null>(null)
   const [capacityFile, setCapacityFile] = useState<File | null>(null)
+  const [loading, setLoading] = useState<boolean | null>(true)
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>, setFile: React.Dispatch<React.SetStateAction<File | null>>) => {
     const file = e.target.files?.[0]
@@ -26,7 +29,7 @@ const Home: React.FC = () => {
     }
   }
 
-  const proceed = (flag: boolean) => {
+  const proceed = async (flag: boolean) => {
     //flag to indicate custom data
     localStorage.setItem('useCustomData', flag.toString())
     if (flag) {
@@ -41,14 +44,23 @@ const Home: React.FC = () => {
         })
         return
       }
-      navigate('/dashboard')
+
+      setLoading(false)
+      const isValid = await validateUploadedCsvFiles()
+      setLoading(false)
+      if (isValid) {
+        navigate('/dashboard')
+      }
+
 
     }
     navigate('/dashboard')
   }
 
   return (
+
     <div className=" mx-16 py-4 font-poppins">
+      {loading && <Loading />}
       {/* header-start */}
       <div className='flex flex-row justify-between'>
         {/* header-left-side */}
