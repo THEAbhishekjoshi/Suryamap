@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate()
   const [solarGenFile, setSolarGenFile] = useState<File | null>(null)
   const [capacityFile, setCapacityFile] = useState<File | null>(null)
-  const [loading, setLoading] = useState<boolean | null>(true)
+  const [loading, setLoading] = useState<boolean | null>(null)
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>, setFile: React.Dispatch<React.SetStateAction<File | null>>) => {
     const file = e.target.files?.[0]
@@ -32,6 +32,8 @@ const Home: React.FC = () => {
   const proceed = async (flag: boolean) => {
     //flag to indicate custom data
     localStorage.setItem('useCustomData', flag.toString())
+    // saving dahboard token
+    localStorage.setItem('dashboard_token', import.meta.env.VITE_DASHBOARD_TOKEN)
     if (flag) {
       if (!solarGenFile || !capacityFile) {
         toast.warning("Please upload both the csv files", {
