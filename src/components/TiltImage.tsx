@@ -39,7 +39,7 @@ export default function TiltCard() {
             style={{
                 transformStyle: "preserve-3d",
             }}
-            className="rounded-3xl bg-white shadow-xl"
+            className="rounded-3xl "
         >
             <div
                 style={{
