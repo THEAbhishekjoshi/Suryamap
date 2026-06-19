@@ -31,15 +31,28 @@ export const SolarPowerGenerationProvider = ({ children }: { children: React.Rea
   const [yearKeys, setYearKeys] = useState<string[]>([])
 
   useEffect(() => {
-    csv("/solarPowerGeneration1.csv")
-      .then((data) => {
-        const formattedData: Record<string, number>[] = data.map((d: any) => d)
-        setGenerationData(formattedData);
+    const localData = localStorage.getItem("solarGenData")
+    const hasCustomData = localStorage.getItem("useCustomData") === "true"
+    if (localData && hasCustomData) {
+      const parsedData = JSON.parse(localData)
+      setGenerationData(parsedData)
+      setYearKeys(Object.keys(parsedData[0] || {})
+        .filter((key: any) => key !== 'State' && key !== 'Total' && (key.split('-')[1] - key.split('-')[0]) == 1)
+        .sort())
 
-        setYearKeys(Object.keys(formattedData[0] || {})
-          .filter((key: any) => key !== 'State' && key !== 'Total' && (key.split('-')[1] - key.split('-')[0]) == 1)
-          .sort())
-      })
+      // console.log("43 using custom data")
+
+    } else {
+      console.log("46 using sample csv")
+      csv("/solarPowerGeneration1.csv")
+        .then((data) => {
+          const formattedData: Record<string, number>[] = data.map((d: any) => d)
+          setGenerationData(formattedData)
+          setYearKeys(Object.keys(formattedData[0] || {})
+            .filter((key: any) => key !== 'State' && key !== 'Total' && (key.split('-')[1] - key.split('-')[0]) == 1)
+            .sort())
+        })
+    }
   }, [])
 
 

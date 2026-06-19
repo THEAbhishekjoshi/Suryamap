@@ -13,6 +13,7 @@
       "vite/client"
     ],
     "skipLibCheck": true,
+    "allowJs": true,
     // "resolveJsonModule": true,
     // "esModuleInterop": true,
     // "allowSyntheticDefaultImports": true,
@@ -31,7 +32,6 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-
     /* shadcn */
     "baseUrl": ".",
     "paths": {

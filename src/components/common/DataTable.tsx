@@ -19,10 +19,22 @@ export function DataTable({ selectedState }: { selectedState: string }) {
 
 
     useEffect(() => {
-        csv('/solar_capacity_statewise_2017_2023.csv')
-            .then((data) =>
-                setCapData(data)
-            )
+
+        if (localStorage.getItem("useCustomData") === "true") {
+            const data = localStorage.getItem("solarCapData")
+            console.log("25 using custom data")
+            if (data) {
+                const parsedData = JSON.parse(data)
+                setCapData(parsedData)
+            }
+        } else {
+            console.log("25 using sample csv")
+            csv('/solar_capacity_statewise_2017_2023.csv')
+                .then((data) =>
+                    setCapData(data)
+                )
+
+        }
     }, [])
 
     const header: string[] = capData.length > 0 ? Object.keys(capData[0]) : []
