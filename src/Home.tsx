@@ -62,7 +62,7 @@ const Home: React.FC = () => {
 
   return (
 
-    <div className="font-poppins bg-[url('/bg11.png')]">
+    <div className="font-poppins ">
       {loading && <Loading />}
 
       <div className='md:mx-16 py-4 px-2 '>
@@ -78,8 +78,10 @@ const Home: React.FC = () => {
 
             {/* header-right-side */}
             <div className='flex gap-2 md:gap-3 lg:gap-5 items-center'>
-              <img src='/github2.png' className='w-6 h-6 lg:w-8 lg:h-8' />
-              <button className='bg-orange-400 text-white px-2 py-2 lg:px-4 lg:py-2 rounded-md text-xs md:text-sm lg:text-md ' onClick={() => document.getElementById('upload-section')?.scrollIntoView({ behavior: 'smooth' })}>Get Started ➜</button>
+              <a href="https://github.com/THEAbhishekjoshi/Suryamap" target='_blank' rel='noopener noreferrer'>
+                <img src='/github2.png' className='w-6 h-6 lg:w-8 lg:h-8' />
+              </a>
+              <button className='bg-orange-400 hover:bg-orange-500 transition-colors duration-200 cursor-pointer text-white px-2 py-2 lg:px-4 lg:py-2 rounded-md text-xs md:text-sm lg:text-md ' onClick={() => document.getElementById('upload-section')?.scrollIntoView({ behavior: 'smooth' })}>Get Started ➜</button>
             </div>
           </div>
 
@@ -88,9 +90,9 @@ const Home: React.FC = () => {
         {/* title section */}
         <div className="mt-20 lg:mt-16 flex flex-col items-center justify-center ">
           <div className='max-w-3xl'>
-            <div className='hover:text-orange-400/80  font-bold  text-orange-400 flex flex-row gap-2 justify-center items-center'>
+            <div className='hover:text-orange-500 transition-colors duration-200 font-bold  text-orange-400 flex flex-row gap-2 justify-center items-center'>
               <div className='text-3xl md:text-4xl lg:text-6xl font-extrabold'>Suryamap</div>
-              <div className='text-slate-600 text-xl md:text-2xl lg:text-4xl pt-1'>-Visualizer</div>
+              <div className='text-slate-600 text-xl md:text-2xl lg:text-4xl mt-2'>-Visualizer</div>
             </div>
             <div className='text-black/70 text-sm md:text-lg font-semibold text-center mt-2 p-2'>Interactive 3D visualization platform for analyzing solar power generation across India</div>
           </div>
@@ -98,14 +100,14 @@ const Home: React.FC = () => {
 
         {/* Demo prototype section */}
         <div className='mt-10 md:mt-8 flex justify-center p-5 md:p-0'>
-          <div className='max-w-3xl shadow-2xl ' style={{ perspective: "1000px" }}>
+          <div className='max-w-5xl shadow-2xl ' style={{ perspective: "1000px" }}>
             <TiltCard />
           </div>
         </div>
 
         {/* Information section */}
-        <div className="mt-24 flex justify-center">
-          <div className="max-w-3xl w-full">
+        <div className="mt-24 lg:mt-32 flex justify-center">
+          <div className="max-w-5xl w-full">
 
             <div className="text-center mb-12">
               <h2 className="text-xl md:text-2xl lg:text-4xl font-bold">
@@ -234,8 +236,8 @@ const Home: React.FC = () => {
 
 
         {/* Upload section */}
-        <div className='flex flex-col items-center mt-10 ' id="upload-section">
-          <div className='max-w-3xl w-full'>
+        <div className='flex flex-col items-center mt-12 ' id="upload-section">
+          <div className='max-w-5xl w-full'>
             <div className='text-center mb-12'>
               <h1 className='text-xl md:text-2xl lg:text-4xl font-bold'>Explore Your Data</h1>
               <div className='mt-3 text-sm md:tex-md lg:text-lg'>Upload your own solar dataset or start
@@ -316,7 +318,7 @@ const Home: React.FC = () => {
 
           </div >
         </div >
-      </div>
+      </div >
     </div >
   )
 }
