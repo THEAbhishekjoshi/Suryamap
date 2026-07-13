@@ -6,6 +6,9 @@ import { csvParse } from "d3-dsv"
 import { toast } from "sonner"
 import validateUploadedCsvFiles from './lib/validateUploadedCsvFiles';
 import Loading from './components/common/Loading';
+import DotField from './components/ui/DotField.js';
+import ShinyText from './components/ui/ShinyText.js';
+import RotatingText from './components/ui/RotatingText.js';
 
 
 const Home: React.FC = () => {
@@ -62,10 +65,32 @@ const Home: React.FC = () => {
 
   return (
 
-    <div className="font-poppins ">
+    <div className="font-poppins">
+
+
       {loading && <Loading />}
 
       <div className='md:mx-16 py-4 px-2 '>
+
+
+        <div style={{ width: '100%', height: '100%' }} className='relative'>
+          <DotField
+            className='fixed top-0 left-0 right-0 bottom-0 -z-50'
+            dotRadius={1.7}
+            dotSpacing={14}
+            bulgeStrength={100}
+            glowRadius={100}
+            sparkle={false}
+            waveAmplitude={1}
+            cursorRadius={300}
+            cursorForce={0.1}
+            bulgeOnly
+            gradientFrom="#eea36f"
+            gradientTo="#B497CF"
+            glowColor="#ffffff"
+
+          />
+        </div>
         {/* header-start */}
         <div className='flex items-center'>
           {/* header-left-side */}
@@ -88,13 +113,42 @@ const Home: React.FC = () => {
         </div>
 
         {/* title section */}
-        <div className="mt-20 lg:mt-16 flex flex-col items-center justify-center ">
+        <div className="mt-16 lg:mt-12 flex flex-col items-center justify-center ">
           <div className='max-w-3xl'>
             <div className='hover:text-orange-500 transition-colors duration-200 font-bold  text-orange-400 flex flex-row gap-2 justify-center items-center'>
-              <div className='text-3xl md:text-4xl lg:text-6xl font-extrabold'>Suryamap</div>
-              <div className='text-slate-600 text-xl md:text-2xl lg:text-4xl mt-2'>-Visualizer</div>
+              <div className='text-3xl md:text-4xl lg:text-6xl font-extrabold'>
+                <ShinyText
+                  text="Suryamap"
+                  speed={2}
+                  delay={0}
+                  color="#f78c56ff"
+                  shineColor="#ef5a10ff"
+                  spread={120}
+                  direction="left"
+                  yoyo={false}
+                  pauseOnHover={false}
+                  disabled={false}
+                />
+              </div>
+              <div className='text-slate-600 text-xl md:text-2xl lg:text-4xl mt-2'>
+                <RotatingText
+                  texts={['-Visualizer', '-3D Map']}
+                  mainClassName="mt-2 px-2 sm:px-2 md:px-3 bg-cyan/10 text-gray-400 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                  staggerFrom="last"
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={2000}
+                  splitBy="characters"
+                  auto
+                  loop
+                />
+              </div>
             </div>
-            <div className='text-black/70 text-sm md:text-lg font-semibold text-center mt-2 p-2'>Interactive 3D visualization platform for analyzing solar power generation across India</div>
+            <div className='max-w-xl text-black/70 text-sm md:text-lg font-semibold text-center mt-2 p-2'>Interactive 3D visualization platform for analyzing solar power generation across India</div>
           </div>
         </div>
 
